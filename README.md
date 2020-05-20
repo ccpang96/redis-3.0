@@ -1,4 +1,4 @@
-# 文件的作用 
+# 一.文件的作用 
 |文件	|作用 |
 |----|----|
 |adlist.c 、 adlist.h	|双端链表数据结构的实现。|
@@ -60,6 +60,6 @@
 |zipmap.c 、 zipmap.h	| ZIPMAP 数据结构的实现，在 Redis 2.6| |以前用与优化 HASH 类型， Redis 2.6 开始已经废弃。|
 |zmalloc.c 、 zmalloc.h	|内存管理程序|
 
-# dict的实现
+# 二.dict的实现
 
 ![dict结构](https://img2020.cnblogs.com/blog/1755696/202005/1755696-20200520115314785-1007312303.png)
