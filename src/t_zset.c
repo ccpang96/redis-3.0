@@ -113,7 +113,7 @@ zskiplist *zslCreate(void) {
 
     // 初始化表头节点
     // T = O(1)
-    zsl->header = zslCreateNode(ZSKIPLIST_MAXLEVEL,0,NULL);
+    zsl->header = zslCreateNode(ZSKIPLIST_MAXLEVEL,0,NULL);         //ZSKIPLIST_MAXLEVEL表示链表有多少层
     for (j = 0; j < ZSKIPLIST_MAXLEVEL; j++) {
         zsl->header->level[j].forward = NULL;
         zsl->header->level[j].span = 0;

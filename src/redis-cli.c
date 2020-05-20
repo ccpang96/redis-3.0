@@ -330,7 +330,7 @@ static int cliConnect(int force) {
     if (context == NULL || force) {
         if (context != NULL)
             redisFree(context);
-
+        //调用redisConnect函数连接到redis服务器实例，使用redisContext保存连接上下文。
         if (config.hostsocket == NULL) {
             context = redisConnect(config.hostip,config.hostport);
         } else {
@@ -352,9 +352,11 @@ static int cliConnect(int force) {
          * in order to prevent timeouts caused by the execution of long
          * commands. At the same time this improves the detection of real
          * errors. */
+        //通过设置KeepAlive属性避免连接断开，KeepAlive的默认时间是15s。
         anetKeepAlive(NULL, context->fd, REDIS_CLI_KEEPALIVE_INTERVAL);
 
         /* Do AUTH and select the right DB. */
+        //连接成功后，进行验证并选择正确的DB
         if (cliAuth() != REDIS_OK)
             return REDIS_ERR;
         if (cliSelect() != REDIS_OK)
@@ -1934,7 +1936,7 @@ int main(int argc, char **argv) {
         /* Note that in repl mode we don't abort on connection error.
          * A new attempt will be performed for every command send. */
         cliConnect(0);
-        repl();
+        repl();     //读取终端命令
     }
 
     /* Otherwise, we have some arguments to execute */
